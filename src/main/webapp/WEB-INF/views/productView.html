@@ -101,6 +101,6 @@
             <button type="submit" class="btn-delete">삭제</button>
         </form>
     </div>
-
+    <footer><p th:text="${'실습 수행: ' + #temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></p></footer>
 </body>
 </html>

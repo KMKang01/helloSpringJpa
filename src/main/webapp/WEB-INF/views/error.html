@@ -55,6 +55,6 @@
     </div>
 
     <a class="btn" th:href="@{/products}">← 상품 목록으로 돌아가기</a>
-
+    <footer><p th:text="${'실습 수행: ' + #temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></p></footer>
 </body>
 </html>
