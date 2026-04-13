@@ -75,5 +75,3 @@ public class CategoryService {
 		categoryRepository.delete(id);
 	}
 }
-
-}
