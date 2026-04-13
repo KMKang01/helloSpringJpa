@@ -23,6 +23,9 @@ public class CategoryRepository {
         return Optional.ofNullable(em.find(Category.class, id));
     }
 
+    public void delete(Long id) {
+        Category c = em.find(Category.class, id); if (c != null) em.remove(c); }
+
     public List<Category> findAll() {
         return em.createQuery("SELECT c FROM Category c ORDER BY c.id", Category.class)
                 .getResultList();
