@@ -42,9 +42,10 @@ public class CategoryController {
 	// GET  /categories             → 카테고리 목록 조회 (categoryList.html 신규 작성)
 	// ─────────────────────────────────────────────────────────────────
 
-	@GetMapping
+	@GetMapping // GET /categories → 목록
 	public String listCategories(Model model) {
-		return "categories";
+		model.addAttribute("categories", categoryService.getAllCategories());
+		return "categoryList";
 	}
 	// ─────────────────────────────────────────────────────────────────
 	// GET  /categories/create      → 카테고리 등록 폼 표시
@@ -67,7 +68,7 @@ public class CategoryController {
 	// ─────────────────────────────────────────────────────────────────
 
 	@PostMapping("/{id}/delete")
-	public String deleteCategory(@PathVariable Long id,Model model) {
+	public String deleteCategory(@PathVariable Long id, Model model) {
 		return "categories";
 	}
 
