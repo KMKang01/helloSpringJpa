@@ -36,6 +36,6 @@
         <span th:errors="*{name}" style="color:red"></span>
         <button type="submit">등록</button>
     </form>
-    <footer><p th:text="${'실습 수행: ' + #temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></p></footer>
+    <footer><p th:text="${'실습 수행: ' + #temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss') + '| 학번: 2071207 | 이름: 강경민'}"></p></footer>
 </body>
 </html>
