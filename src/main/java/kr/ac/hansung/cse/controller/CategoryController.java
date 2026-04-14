@@ -51,10 +51,12 @@ public class CategoryController {
 	// GET  /categories/create      → 카테고리 등록 폼 표시
 	// ─────────────────────────────────────────────────────────────────
 
-	@GetMapping("/create")
-	public String createCategory(Model model) {
-		return "categories";
+	@GetMapping("/create") // GET → 등록 폼 표시
+	public String showCreateForm(Model model) {
+		model.addAttribute("categoryForm", new CategoryForm());
+		return "categoryForm";
 	}
+
 	// ─────────────────────────────────────────────────────────────────
 	// POST /categories/create      → 카테고리 등록 처리(@Valid + BindingResult)
 	// ─────────────────────────────────────────────────────────────────
