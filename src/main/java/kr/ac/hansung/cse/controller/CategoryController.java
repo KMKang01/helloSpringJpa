@@ -84,8 +84,15 @@ public class CategoryController {
 	// ─────────────────────────────────────────────────────────────────
 
 	@PostMapping("/{id}/delete")
-	public String deleteCategory(@PathVariable Long id, Model model) {
-		return "categories";
+	public String deleteCategory(@PathVariable Long id,
+								 RedirectAttributes redirectAttributes) {
+		try {
+			categoryService.deleteCategory(id);
+			redirectAttributes.addFlashAttribute("successMessage", "삭제 완료");
+		} catch (IllegalStateException e) {
+			// 연결된 상품 있을 때 → Flash로 오류 메시지 전달
+			redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+		}
+		return "redirect:/categories";
 	}
-
 }
