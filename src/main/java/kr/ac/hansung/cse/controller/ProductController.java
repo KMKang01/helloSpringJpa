@@ -46,13 +46,6 @@ public class ProductController {
 	// GET /products - 상품 목록 조회
 	// ─────────────────────────────────────────────────────────────────
 
-	@GetMapping
-	public String listProducts(Model model) {
-		List<Product> products = productService.getAllProducts();
-		model.addAttribute("products", products);
-		return "productList";
-	}
-
 	// ─────────────────────────────────────────────────────────────────
 	// GET /products/{id} - 상품 상세 조회
 	// ─────────────────────────────────────────────────────────────────
