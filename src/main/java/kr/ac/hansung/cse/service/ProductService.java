@@ -139,5 +139,7 @@ public class ProductService {
 		return productRepository.findByNameContaining(keyword);
 	}
 
-
+	public List<Product> searchByCategory(Long categoryId) {
+		return productRepository.findByCategoryId(categoryId);
+	}
 }
