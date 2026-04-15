@@ -131,4 +131,14 @@ public class ProductRepository {
             entityManager.remove(product);
         }
     }
+
+    // 이름 검색: JPQL의 LIKE로 키워드 포함 여부 검사
+    public List<Product> findByNameContaining(String keyword) {
+        return entityManager.createQuery(
+                        "SELECT p FROM Product p WHERE p.name LIKE :keyword",
+                        Product.class)
+                // "%" + keyword + "%"  →  부분 일치 검색 (앞뒤에 % 붙이는 것이 핵심!)
+                .setParameter("keyword", "%" + keyword + "%")
+                .getResultList();
+    }
 }
