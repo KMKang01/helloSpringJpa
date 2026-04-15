@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import kr.ac.hansung.cse.exception.ProductNotFoundException;
 import kr.ac.hansung.cse.model.Product;
 import kr.ac.hansung.cse.model.ProductForm;
+import kr.ac.hansung.cse.service.CategoryService;
 import kr.ac.hansung.cse.service.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,14 +36,11 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/products")
+@RequiredArgsConstructor
 public class ProductController {
 
 	private final ProductService productService;
-
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
-
+	private final CategoryService categoryService;
 
 	// ─────────────────────────────────────────────────────────────────
 	// GET /products - 상품 목록 조회
