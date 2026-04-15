@@ -103,6 +103,15 @@
         .btn-delete:hover {
             color: #c0392b;
         }
+        .btn-submit {
+            background: #4a90d9;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
         .alert-success {
             background: #d4edda;
@@ -121,11 +130,27 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .w-75 {
+            width:75%;
+        }
+        .g-10{
+            gap: 10%;
+        }
+
+        input[type="text"], input[type="number"], textarea, select {
+            width: 50%;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+            font-family: inherit;
         }
 
     </style>
@@ -134,8 +159,8 @@
 <!-- 검색 폼: form method="get" → URL 파라미터로 전송 -->
 <form th:action="@{/products}" method="get">
     <!-- th:value로 검색 후에도 입력값이 유지됨 -->
-    <div class="form-group to-center">
-        <div>
+    <div class="form-group">
+    <div class="form-group g-10 w-75">
         <input type="text" name="keyword" th:value="${keyword}" placeholder="상품명 검색"/>
         <!-- th:each로 카테고리 목록 반복, th:selected로 선택 상태 유지 -->
         <select name="categoryId">
@@ -144,8 +169,8 @@
                     th:value="${cat.id}" th:text="${cat.name}"
                     th:selected="${cat.id == categoryId}"></option>
         </select>
-        </div>
-        <button type="submit">검색</button>
+    </div>
+        <button type="submit" class="btn-submit" style="flex-direction: column">검색</button>
     </div>
 </form>
 <!-- 결과 없음: #lists.isEmpty()로 빈 리스트 감지 -->
