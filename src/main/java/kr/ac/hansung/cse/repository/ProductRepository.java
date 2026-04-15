@@ -141,4 +141,14 @@ public class ProductRepository {
                 .setParameter("keyword", "%" + keyword + "%")
                 .getResultList();
     }
+
+    // 카테고리 필터: Product의 category.id 로 조회 (p.category.id = JPQL 경로 표현식)
+    public List<Product> findByCategoryId(Long categoryId) {
+        return entityManager.createQuery(
+                        "SELECT p FROM Product p WHERE p.category.id = :cid",
+                        Product.class)
+                .setParameter("cid", categoryId)
+                .getResultList();
+    }
+
 }
