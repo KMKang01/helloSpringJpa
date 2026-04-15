@@ -32,7 +32,7 @@
 <p th:if="${successMessage}" th:text="${successMessage}"></p>
 <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
-<a class="btn" th:href="@{/products/create}">+ 새 상품 등록</a>
+<a class="btn" th:href="@{/categories/create}">+ 새 상품 등록</a>
 
 <div class="empty-msg" th:if="${#lists.isEmpty(categories)}">
     등록된 카테고리가 없습니다. 새 카테고리를 등록해 주세요.
@@ -60,7 +60,7 @@
     </tr>
     </tbody>
 </table>
-<footer><p th:text="${'실습 수행: ' + #temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss') + '| 학번: 2071207 | 이름: 강경민'}"></p></footer>
+<footer><p th:text="${'실습 수행: ' + #temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss') + ' | 학번: 2071207 | 이름: 강경민'}"></p></footer>
 
 </body>
 </html>
