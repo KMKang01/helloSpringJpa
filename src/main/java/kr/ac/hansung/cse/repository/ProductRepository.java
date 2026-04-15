@@ -135,7 +135,7 @@ public class ProductRepository {
     // 이름 검색: JPQL의 LIKE로 키워드 포함 여부 검사
     public List<Product> findByNameContaining(String keyword) {
         return entityManager.createQuery(
-                        "SELECT p FROM Product p WHERE p.name LIKE :keyword",
+                        "SELECT p FROM Product p left join fetch p.category WHERE p.name LIKE :keyword",
                         Product.class)
                 // "%" + keyword + "%"  →  부분 일치 검색 (앞뒤에 % 붙이는 것이 핵심!)
                 .setParameter("keyword", "%" + keyword + "%")
@@ -145,7 +145,7 @@ public class ProductRepository {
     // 카테고리 필터: Product의 category.id 로 조회 (p.category.id = JPQL 경로 표현식)
     public List<Product> findByCategoryId(Long categoryId) {
         return entityManager.createQuery(
-                        "SELECT p FROM Product p WHERE p.category.id = :cid",
+                        "SELECT p FROM Product p left join fetch p.category WHERE p.category.id = :cid",
                         Product.class)
                 .setParameter("cid", categoryId)
                 .getResultList();
